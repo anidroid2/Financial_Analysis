@@ -10,3 +10,10 @@ blank_adjustments <- function(x){
     
     return(op)
 }
+
+#Return meaning from CC
+
+CC_subid2desc <- function(x){
+    p <- subset(CC,CC$SubID==x)[1,3]
+    return(p)
+    }

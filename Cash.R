@@ -1,3 +1,6 @@
+#sort in descending order
+TT <- TT[order(TT$SNo., TT$ValueDate, decreasing=TRUE),]
+
 #Asset Acct 101
 Asset101 <-subset(TT,TT$Account==101,select = c(ValueDate,Balance.INR.))
 Asset101 <- Asset101[!duplicated(Asset101$ValueDate),]

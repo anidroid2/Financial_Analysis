@@ -18,6 +18,9 @@ TT$ChequeNumber <- as.character(TT$ChequeNumber)
 TT$TransactionRemarks <- as.character(TT$TransactionRemarks)
 TT$ValueDate <- as.Date(TT$ValueDate,"%d/%m/%Y")
 
+CC$Short.Description <- as.character(CC$Short.Description)
+CC$Description <- as.character(CC$Description)
+
 MF$Date <- as.Date(MF$Date)
 MF$Account <- factor(MF$Account)
 
