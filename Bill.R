@@ -19,8 +19,4 @@ bills_month_wide <- bills_month_wide[order(bills_month_wide$Year,bills_month_wid
 bills_month_wide$SubID <- sapply(bills_month_wide$SubID, function(x) CC_subid2desc(x))
 #bills_month_wide$SubID <- as.character(bills_month_wide$SubID)
 
-g <- ggplot(bills_month_wide,aes(x=bills_month_wide$Month,y=bills_month_wide$Bill ,fill=bills_month_wide$SubID)) + geom_bar(stat="identity")
-
 bills_month_wide$SubID <- as.factor(bills_month_wide$SubID)
-
-print(g)

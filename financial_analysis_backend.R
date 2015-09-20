@@ -1,16 +1,19 @@
 #setup working directory
 setwd("/home/aniket/Documents/FinancialAnalysis/Dev")
+
 source("routine.R")
 source("Quandl.R")
+
 library(ggplot2)
+library(shiny)
 
 #Loading from CSV and formatting data
 source("loadcsv.R")
 
-#creation of TT advanced
-source("TTadv.R")
+#Bills tables
+source("Bill.R") #Q01
 #subroutine for Cash Segment Calculations
-source("Cash.R")
+source("Cash.R") #Q02
 
 #subroutine for Equity Segment Calculations
 #source("Equity.R")
