@@ -29,3 +29,6 @@ Asset_C$Total <- rowSums(Asset_C[,-1])
 
 #Workspace Clean up
 rm(list=c("Asset101","Asset102","Asset103"))
+
+Cash_graph <- ggplot(Asset_C, aes(Asset_C$ValueDate, Asset_C$Total)) +geom_step(direction = "hv")
+print(Cash_graph)
