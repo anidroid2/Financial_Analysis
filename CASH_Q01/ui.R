@@ -13,6 +13,7 @@ shinyUI(fluidPage(
                   "Year:",
                   choices = list("2014" = 2014, "2015" = 2015,
                                  "2016" = 2016), selected = 2015)
+        
     ),
 
     # Show a plot of the generated distribution

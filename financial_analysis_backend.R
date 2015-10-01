@@ -15,6 +15,9 @@ source("Bill.R") #Q01
 #subroutine for Cash Segment Calculations
 source("Cash.R") #Q02
 
+#subroutine for shopping expenses
+source("ShoppingExpense.R")
+
 #subroutine for Equity Segment Calculations
 #source("Equity.R")
 
