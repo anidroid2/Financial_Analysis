@@ -17,11 +17,11 @@ source("Bill.R") #Q01
 source("Cash.R") #Q02
 
 #subroutine for shopping expenses
-source("ShoppingExpense.R")
+source("ShoppingExpense.R") #Q03
 
 #subroutine for Equity Segment Calculations
-source("Equity.R")
-
+source("Equity.R")  #Q11
+source("Income.R")  #Q12
 #source("Historic_Equity.R")
 
 #Save all tabels in workspace to be used by reporting scripts
