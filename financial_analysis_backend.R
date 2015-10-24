@@ -22,5 +22,7 @@ source("ShoppingExpense.R")
 #subroutine for Equity Segment Calculations
 source("Equity.R")
 
+#source("Historic_Equity.R")
+
 #Save all tabels in workspace to be used by reporting scripts
 save.image(file="R_ws.RData")

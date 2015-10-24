@@ -16,15 +16,16 @@ holding <- holding[holding$Qty != 0,]
 
 holding$Stockcode <- sapply(holding$Stock, get_code )
 holding$NAVperUnit <- sapply(holding$Stockcode, get_stock_price_day_close)
-holding <- mutate(holding, NAV = NAVperUnit * Qty)
+#holding <- mutate(holding, NAV = NAVperUnit * Qty)
+holding$NAV <- holding$NAVperUnit * holding$Qty
 
 KPI_ICICI_Equity_Hold <- sum(holding$NAV)
 
 MF_holding <- TTadv[TTadv$TransferCode == "40MF",]
 KPI_MF_invest <- sum(MF_holding$WithdrawalAmount.INR.)
 
-pie_value <- c(KPI_CASH, KPI_ICICI_Equity_Hold, KPI_MF_invest, 20000)
-pie_label <- c("Cash", "Long Term Equity", "Long Term Mutual Fund","Zerodha Equity Short Term Account")
+pie_value <- c(KPI_CASH, 18385, KPI_MF_invest, 40000)
+pie_label <- c("Cash", "ICICI Equity", "Long Term Mutual Fund","Zerodha Equity Account")
 pie_slices <- (pie_value/sum(pie_value))*100
 asset_df <- data.frame(pie_label,pie_value,pie_slices)
 colnames(asset_df) <- c("Type", "Amount in Rs.", "% allocation")
