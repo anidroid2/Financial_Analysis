@@ -3,15 +3,15 @@ library(ggplot2)
 #Dependency : TTadv
 
 #Bills Report
-shop_expense_table <- subset(TTadv,TTadv$CostCentre=="15SH")
+SH <- subset(TTadv,TTadv$CostCentre=="15SH")
 
 
-shop_expense_month_wide <- aggregate(shop_expense_table$WithdrawalAmount.INR., by= list(shop_expense_table$year,shop_expense_table$month,shop_expense_table$SubID),"sum")
+SH_BYM <- aggregate(SH$WithdrawalAmount.INR., by= list(SH$year,SH$month,SH$SubID),"sum")
 #bills_month_wide$SubID <- as.character(bills_month_wide$SubID)
-colnames(shop_expense_month_wide) <- c("Year","Month","SubID","shop_expense")
-shop_expense_month_wide <- shop_expense_month_wide[order(shop_expense_month_wide$Year,shop_expense_month_wide$Month),]
+colnames(SH_BYM) <- c("Year","Month","SubID","shop_expense")
+SH_BYM <- SH_BYM[order(SH_BYM$Year,SH_BYM$Month),]
 
-shop_expense_month_wide$SubID <- sapply(shop_expense_month_wide$SubID, function(x) CC_subid2desc(x))
+SH_BYM$SubID <- sapply(SH_BYM$SubID, function(x) CC_subid2desc(x))
 #bills_month_wide$SubID <- as.character(bills_month_wide$SubID)
 
-shop_expense_month_wide$SubID <- as.factor(shop_expense_month_wide$SubID)
+SH_BYM$SubID <- as.factor(SH_BYM$SubID)

@@ -2,9 +2,9 @@
 #Dependency : TTadv
 
 #Bills Report
-i_stat <- subset(TTadv,TTadv$ProfitCentre=="20SA")
+IN <- subset(TTadv,TTadv$ProfitCentre=="20SA")
 
-income_month_basis <- aggregate(i_stat$DepositAmount.INR., by= list(i_stat$month,i_stat$year),"sum")
+IN_BYM <- aggregate(IN$DepositAmount.INR., by= list(IN$month,IN$year),"sum")
 
-colnames(income_month_basis) <- c("Month","Year","Income")
+colnames(IN_BYM) <- c("Month","Year","Income")
 

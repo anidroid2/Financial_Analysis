@@ -8,9 +8,9 @@ TC <- read.csv("~/Documents/FinancialAnalysis/DataSource/TC.csv")  #Transfer Cod
 TT <- read.csv("~/Documents/FinancialAnalysis/DataSource/TT.csv")                         #Bank Balance Sheets
 #MF <- read.csv("~/Documents/FinancialAnalysis/DataSource/MF.csv",stringsAsFactors=FALSE)  #Mutual Funds
 
-TB <- read.csv("~/Documents/FinancialAnalysis/DataSource/TB.csv",stringsAsFactors=FALSE)  #TradeBook
-TBadj <- read.csv("~/Documents/FinancialAnalysis/DataSource/TBadj.csv",stringsAsFactors=FALSE)  #TradeBook Adjustments
-NSEcodes <- read.csv("~/Documents/FinancialAnalysis/DataSource/NSEcodes.csv",stringsAsFactors=FALSE)  #NSE codes
+#TB <- read.csv("~/Documents/FinancialAnalysis/DataSource/TB.csv",stringsAsFactors=FALSE)  #TradeBook
+#TBadj <- read.csv("~/Documents/FinancialAnalysis/DataSource/TBadj.csv",stringsAsFactors=FALSE)  #TradeBook Adjustments
+#NSEcodes <- read.csv("~/Documents/FinancialAnalysis/DataSource/NSEcodes.csv",stringsAsFactors=FALSE)  #NSE codes
 
 #Cleaning Data
 TT$ValueDate <- as.character(TT$ValueDate)
@@ -28,7 +28,7 @@ CC$Description <- as.character(CC$Description)
 
 #CE$ValueDate <- as.Date(CE$ValueDate)
 #CE$CostCentre <- factor(CE$CostCentre)
-TBtot <- rbind(TB,TBadj)
+#TBtot <- rbind(TB,TBadj)
 
 # TB$Action <- factor(TB$Action)
 # TB$Exchange <- factor(TB$Exchange)

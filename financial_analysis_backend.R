@@ -7,7 +7,7 @@ source("Quandl.R")
 
 library(ggplot2)
 library(shiny)
-
+source("def.R")
 #Loading from CSV and formatting data
 source("loadcsv.R")
 
@@ -20,7 +20,7 @@ source("Cash.R") #Q02
 source("ShoppingExpense.R") #Q03
 
 #subroutine for Equity Segment Calculations
-source("Equity.R")  #Q11
+#source("Equity.R")  #Q11
 source("Income.R")  #Q12
 #source("Historic_Equity.R")
 
