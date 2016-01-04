@@ -24,5 +24,7 @@ source("ShoppingExpense.R") #Q03
 source("Income.R")  #Q12
 #source("Historic_Equity.R")
 
+source("Investments.R")
+
 #Save all tabels in workspace to be used by reporting scripts
 save.image(file="R_ws.RData")

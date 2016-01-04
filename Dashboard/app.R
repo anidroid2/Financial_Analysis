@@ -36,7 +36,17 @@ ui <- dashboardPage(
             #DASHBOARD
             tabItem(tabName = "dashboard",
                     fluidRow(
-                        infoBoxOutput("Box1")
+                        infoBoxOutput("Box1"),
+                        infoBoxOutput("Box2")
+                        
+                    ),
+                    fluidRow(
+                        infoBoxOutput("Box3"),
+                        infoBoxOutput("Box4")
+                    ),
+                    fluidRow(
+                        box(plotOutput("plot_pie"))
+                        
                     )
             ),
     
@@ -77,16 +87,28 @@ ui <- dashboardPage(
 server <- function(input, output) {
     
     output$plot1 <- renderPlot({
-        print(ggplot(BL_BYM[BL_BYM$Year == input$year1,], aes(x=Month,y=Bill ,fill=SubID)) + geom_bar(stat="identity"))
+        print(ggplot(BL_BYM[BL_BYM$Year == input$year1,], aes(x=Month,y=Bill ,fill=SubID)) + geom_bar(stat="identity", drop= FALSE)+scale_x_discrete(drop=FALSE))
     })
     output$plot2 <- renderPlot({
-        print(ggplot(SH_BYM[SH_BYM$Year == input$year2,], aes(x=Month,y=shop_expense ,fill=SubID)) + geom_bar(stat="identity"))
+        print(ggplot(SH_BYM[SH_BYM$Year == input$year2,], aes(x=Month,y=shop_expense ,fill=SubID)) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
     })
     output$Box1 <- renderInfoBox({
         infoBox("CASH",paste0(KPI_CASH, " Ru"))
     })
+    output$Box2 <- renderInfoBox({
+        infoBox("Deposits",paste0(KPI_201, " Ru"))
+    })
+    output$Box3 <- renderInfoBox({
+        infoBox("MutualFund",paste0(KPI_MF, " Ru"))
+    })
+    output$Box4 <- renderInfoBox({
+        infoBox("Equity",paste0(KPI_EQ, " Ru"))
+    })
     output$plot_IN <- renderPlot({
-        print(ggplot(IN_BYM[IN_BYM$Year == input$year_IN,], aes(x=Month,y=Income )) + geom_bar(stat="identity"))
+        print(ggplot(IN_BYM[IN_BYM$Year == input$year_IN,], aes(x=Month,y=Income )) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
+    })
+    output$plot_pie <- renderPlot({
+        pie(InvestPie,InvestPie_names,main="Asset Allocation -Current")  
     })
 }
 

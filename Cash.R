@@ -1,5 +1,4 @@
 #sort in descending order
-TT_C <- TTadv[order(TT$SNo., TT$ValueDate, decreasing=TRUE),]
 
 #Asset Acct 101
 Asset101 <-subset(TT,TT$Account==101,select = c(ValueDate,Balance.INR.))
@@ -31,5 +30,5 @@ Asset_C$Total <- rowSums(Asset_C[,-1])
 KPI_CASH = (tail(Asset_C$Total,1))
 
 #Workspace Clean up
-rm(list=c("Asset101","Asset102","Asset103","TT_C"))
+rm(list=c("Asset101","Asset102","Asset103"))
 
