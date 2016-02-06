@@ -1,13 +1,20 @@
 #setup working directory
 setwd("/home/aniket/Documents/FinancialAnalysis/Dev")
 
+#Getting dependencies
+library(Quandl)
+library(quantmod)
+library(stringr)
+
 source("routine.R")
 source("Quandl.R")
-
 
 library(ggplot2)
 library(shiny)
 source("def.R")
+
+#Phase I -Financial Analysis
+
 #Loading from CSV and formatting data
 source("loadcsv.R")
 
@@ -25,6 +32,15 @@ source("Income.R")  #Q12
 #source("Historic_Equity.R")
 
 source("Investments.R")
+
+#source("Credit.R")
+
+#Phase II -Stock Analysis
+
+source("importStockData.R")
+
+
+
 
 #Save all tabels in workspace to be used by reporting scripts
 save.image(file="R_ws.RData")

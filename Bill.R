@@ -1,6 +1,9 @@
 library(ggplot2)
 #creating advanced datafram by replication
 TTadv <- TT
+
+#xTensible Time Series class
+xTT <- xts(TTadv[,-2],order.by=TTadv[,2])
 TTadv$month <- months(TT$ValueDate)
 
 

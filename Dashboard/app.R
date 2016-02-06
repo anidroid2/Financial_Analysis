@@ -28,6 +28,10 @@ ui <- dashboardPage(
             menuItem("OutFlow", tabName = "flow2", icon = icon("bar-chart"),
                      menuSubItem("Bills",tabName = "bill"),
                      menuSubItem("Shopping",tabName = "shop")
+            ),
+            menuItem("Stock",tabName = "sData", icon= icon("dollar"),
+                     menuSubItem("View1", tabName = "View1"),
+                     menuSubItem("View2", tabName = "View2")
             )
         )
     ),
@@ -79,7 +83,17 @@ ui <- dashboardPage(
                             )
                         )
                     )
+            ),
+            tabItem(tabName = "View1",
+                    fluidRow(
+                        box(selectInput("stockin","Stock",choices = (Scode$Description), selected = "Nifty50"),
+                            selectInput("sDur","Plot for: ",choices = Sduration$duration, selected = "2 year")
+                        ),
+                        plotOutput("sPlot1")
+                    )
+                    
             )
+            
         )
     )
 )
@@ -109,6 +123,10 @@ server <- function(input, output) {
     })
     output$plot_pie <- renderPlot({
         pie(InvestPie,InvestPie_names,main="Asset Allocation -Current")  
+    })
+    
+    output$sPlot1 <- renderPlot({
+        chartSeries( last(Ad(eval(parse(text = txtToCode(input$stockin) ))),input$sDur) )
     })
 }
 

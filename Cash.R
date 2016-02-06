@@ -1,18 +1,29 @@
 #sort in descending order
 
 #Asset Acct 101
-Asset101 <-subset(TT,TT$Account==101,select = c(ValueDate,Balance.INR.))
+Asset101 <-subset(TT,TT$Account==101,select = c(SNo., ValueDate,Balance.INR.))
+Asset101 <- Asset101[order(-Asset101$SNo.),]
 Asset101 <- Asset101[!duplicated(Asset101$ValueDate),]
+Asset101 <- Asset101[order(Asset101$SNo.),]
+Asset101 <- Asset101[,-1]
 #ggplot(Asset101,aes(Asset101$ValueDate,Asset101$Balance.INR.))+geom_line()
 
 #Asset Acct 102
-Asset102 <-subset(TT,TT$Account==102,select = c(ValueDate,Balance.INR.))
+Asset102 <-subset(TT,TT$Account==102,select = c(SNo.,ValueDate,Balance.INR.))
+Asset102 <- Asset102[order(-Asset102$SNo.),]
 Asset102 <- Asset102[!duplicated(Asset102$ValueDate),]
+Asset102 <- Asset102[order(Asset102$SNo.),]
+Asset102 <- Asset102[,-1]
+
 #ggplot(Asset102,aes(Asset102$ValueDate,Asset102$Balance.INR.))+geom_line()
 
 #Asset Acct 103
-Asset103 <-subset(TT,TT$Account==103,select = c(ValueDate,Balance.INR.))
+Asset103 <-subset(TT,TT$Account==103,select = c(SNo.,ValueDate,Balance.INR.))
+Asset103 <- Asset103[order(-Asset103$SNo.),]
 Asset103 <- Asset103[!duplicated(Asset103$ValueDate),]
+Asset103 <- Asset103[order(Asset103$SNo.),]
+Asset103 <- Asset103[,-1]
+
 #ggplot(Asset103,aes(Asset103$ValueDate,Asset103$Balance.INR.))+geom_line()
 
 #Asset CASH
