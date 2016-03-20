@@ -16,3 +16,4 @@ get_code <- function(inp){
     op= (subset(NSEcodes,NSEcodes$Stock==inp)[1,2])
     return(op )
 }
+

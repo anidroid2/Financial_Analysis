@@ -5,7 +5,11 @@ setwd("/home/aniket/Documents/FinancialAnalysis/Dev")
 library(Quandl)
 library(quantmod)
 library(stringr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
 
+source("AdvDef.R")
 source("routine.R")
 source("Quandl.R")
 
@@ -33,7 +37,7 @@ source("Income.R")  #Q12
 
 source("Investments.R")
 
-#source("Credit.R")
+source("Credit.R")
 
 #Phase II -Stock Analysis
 

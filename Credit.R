@@ -3,4 +3,4 @@
 
 CR <- subset(TTadv, TTadv$Account == "301")
 
-CR_due <- aggregate(CR$, by = list(CR$month), FUN = sum)
+KPI_CCdue <- sum(CR$WithdrawalAmount.INR. ) - sum(CR$DepositAmount.INR.)

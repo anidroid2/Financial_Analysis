@@ -11,6 +11,9 @@ TT <- read.csv("~/Documents/FinancialAnalysis/DataSource/TT.csv")               
 #TB <- read.csv("~/Documents/FinancialAnalysis/DataSource/TB.csv",stringsAsFactors=FALSE)  #TradeBook
 #TBadj <- read.csv("~/Documents/FinancialAnalysis/DataSource/TBadj.csv",stringsAsFactors=FALSE)  #TradeBook Adjustments
 #NSEcodes <- read.csv("~/Documents/FinancialAnalysis/DataSource/NSEcodes.csv",stringsAsFactors=FALSE)  #NSE codes
+TBz <- read.csv("/home/aniket/Documents/FinancialAnalysis/DataSource/TB_zerodha.csv",stringsAsFactors=TRUE)  #TradeBook
+TBz$Trade.date <- as.Date(TBz$Trade.date,"%d-%m-%Y")
+
 
 #Cleaning Data
 TT$ValueDate <- as.character(TT$ValueDate)
