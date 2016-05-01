@@ -39,6 +39,9 @@ source("Investments.R")
 
 source("Credit.R")
 
+source("event.R")
+
+
 #Phase II -Stock Analysis
 
 source("importStockData.R")

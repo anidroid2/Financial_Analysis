@@ -41,5 +41,3 @@ KPI_EQ <- sum(InvestEQ$Net)
 
 InvestPie <- c(KPI_CASH,KPI_201,KPI_MF,KPI_EQ)
 InvestPie_names <- c("Cash","Fixed Deposit","Mutual Funds","Equity")
-    
-#p_plot <- pie(InvestPie,InvestPie_names,main="Asset Allocation -Current")

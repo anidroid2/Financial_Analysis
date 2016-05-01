@@ -26,7 +26,8 @@ ui <- dashboardPage(
             menuItem("InFlow", tabName = "flow1", icon = icon("bar-chart")),
             menuItem("OutFlow", tabName = "flow2", icon = icon("bar-chart"),
                      menuSubItem("Bills",tabName = "bill"),
-                     menuSubItem("Shopping",tabName = "shop")
+                     menuSubItem("Shopping",tabName = "shop"),
+                     menuSubItem("Event Expenses",tabName = "travel")
             ),
             menuItem("Stock",tabName = "sData", icon= icon("dollar"),
                      menuSubItem("Market Watch", tabName = "View1"),
@@ -84,10 +85,19 @@ ui <- dashboardPage(
                         )
                     )
             ),
+            tabItem(tabName = "travel",
+                    tableOutput("t1")
+                    ),
+            
+            
             tabItem(tabName = "View1",
                     fluidRow(
-                        box(selectInput("stockin1","Stock",choices = (Scode$Description), selected = "Nifty50"),
+                        box(selectInput("stockin1","Stock",choices = (as.list(select(filter(Scode,Type == "Stock" ),Description))), selected = "Nifty50"),
                             selectInput("sDur","Plot for: ",choices = Sduration$duration, selected = "2 year")
+                        ),
+                        box(
+                            selectInput("cType","Type of Chart",choices = c("Candle Stick w/ ", "Line"), selected = "Line")
+                            
                         ),
                         plotOutput("sPlot1")
                     )
@@ -95,7 +105,7 @@ ui <- dashboardPage(
             ),
             tabItem(tabName = "View2",
                     fluidRow(
-                        box(title = "Equity Flow", plotOutput("Eqflow1"))
+                        box(title = "Stock Equity Flow", plotOutput("Eqflow1"))
                     )
                     
             )
@@ -156,18 +166,19 @@ server <- function(input, output) {
     })
     
     output$sPlot1 <- renderPlot({
-        chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::')]  ) # , input$sDur) 
+        if(input$cType != "Line")
+            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::')]  )
+        else
+            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6]  )
     })
     
-    output$sPlot2 <- renderPlot({
-        candleChart(LT.NS['2015::'],multi.col=TRUE,theme = "white")
-    })
     
     output$Eqflow1 <- renderPlot({
         print(ggplot(InvestEQ, aes(x= qtryear, y= Net))+
                   geom_bar(stat="identity",position="identity",aes(fill = inout))+
                   scale_fill_manual(values=c("Out"="firebrick1","In"="steelblue")))
     })
+    output$t1 <- renderTable(TR)
 }
 
 shinyApp(ui, server)
