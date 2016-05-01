@@ -32,7 +32,8 @@ ui <- dashboardPage(
             menuItem("Stock",tabName = "sData", icon= icon("dollar"),
                      menuSubItem("Market Watch", tabName = "View1"),
                      menuSubItem("Historic Fund Flow", tabName = "View2")
-            )
+            ),
+            menuItem("Base TT table", tabName = "bTData")
         )
     ),
     dashboardBody(
@@ -108,7 +109,12 @@ ui <- dashboardPage(
                         box(title = "Stock Equity Flow", plotOutput("Eqflow1"))
                     )
                     
-            )
+            ),
+            tabItem(tabName = "bTData",
+                    fluidRow(
+                        dataTableOutput("BTtable")     
+                    )
+                    )
             
         )
     )
@@ -179,6 +185,8 @@ server <- function(input, output) {
                   scale_fill_manual(values=c("Out"="firebrick1","In"="steelblue")))
     })
     output$t1 <- renderTable(TR)
+    
+    output$BTtable <- renderDataTable(TT) 
 }
 
 shinyApp(ui, server)

@@ -31,7 +31,7 @@ source("Cash.R") #Q02
 source("ShoppingExpense.R") #Q03
 
 #subroutine for Equity Segment Calculations
-#source("Equity.R")  #Q11
+#source("Equity.R")  #Q11 Decommisioned as ICICI TB is now not in the requirements
 source("Income.R")  #Q12
 #source("Historic_Equity.R")
 

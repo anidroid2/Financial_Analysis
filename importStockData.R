@@ -16,7 +16,7 @@ index_symbols <- names(list_symbols)
 
 #transaction data calculations
 stock_td <- tbl_df(TBz)
-stock_td <- select(stock_td, -Trade.time,- Order.no, - Trade.no)
+stock_td <- select(stock_td, -Trade.time)
 
 
 #KPI Calculations
