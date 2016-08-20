@@ -1,7 +1,7 @@
 library(Quandl)
 
-Quandl.auth("Y-qwwQZL4fW4hhUNXcy-")
-d <- date()
+Quandl.api_key("Y-qwwQZL4fW4hhUNXcy-")
+d <- date(now())
 current_date <- as.Date(d,"%a %b %d %H:%M:%S %Y")
 
 #stock_data = Quandl("GOOG/NSE_INFY", start_date=current_date-5, end_date=current_date)

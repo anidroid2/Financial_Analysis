@@ -38,8 +38,10 @@ Asset_C <-blank_adjustments(Asset_C)
 Asset_C$Total <- rowSums(Asset_C[,-1])
 
 #Cash Holding as on Date
-KPI_CASH = (tail(Asset_C$Total,1))
-
+#KPI_CASH = (tail(Asset_C$Total,1))
+#Latest Cash Holding
+KPI_CASH = tail(Asset101$Balance.INR.,1) + tail(Asset102$Balance.INR.,1) + tail(Asset103$Balance.INR.,1)
+ 
 #Workspace Clean up
-rm(list=c("Asset101","Asset102","Asset103"))
+#rm(list=c("Asset101","Asset102","Asset103"))
 

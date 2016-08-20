@@ -1,5 +1,8 @@
 #setup working directory
-setwd("/home/aniket/Documents/FinancialAnalysis/Dev")
+setwd("/home/anidroid2/Documents/FinancialAnalysis/Dev")
+
+#setup variable
+init_env = 1    #1=reload stock environment with new data , 0= dissble reload
 
 #Getting dependencies
 library(Quandl)
@@ -8,6 +11,7 @@ library(stringr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
+library(scales)
 
 source("AdvDef.R")
 source("routine.R")
@@ -16,6 +20,7 @@ source("Quandl.R")
 library(ggplot2)
 library(shiny)
 source("def.R")
+
 
 #Phase I -Financial Analysis
 

@@ -31,7 +31,8 @@ ui <- dashboardPage(
             ),
             menuItem("Stock",tabName = "sData", icon= icon("dollar"),
                      menuSubItem("Market Watch", tabName = "View1"),
-                     menuSubItem("Historic Fund Flow", tabName = "View2")
+                     menuSubItem("Historic Fund Flow", tabName = "View2"),
+                     menuSubItem("Funds Distribution", tabName = "View3")
             ),
             menuItem("Base TT table", tabName = "bTData")
         )
@@ -110,6 +111,14 @@ ui <- dashboardPage(
                     )
                     
             ),
+            tabItem(tabName = "View3",
+                    fluidRow(
+                        box(title = "Distribution of Equity Holidng across MCaps", plotOutput("Dist1")),
+                        box(title = "Distribution of Equity Holidng across Sectors", plotOutput("Dist2"))
+                    )
+                    
+            ),
+            
             tabItem(tabName = "bTData",
                     fluidRow(
                         dataTableOutput("BTtable")     
@@ -123,7 +132,7 @@ ui <- dashboardPage(
 server <- function(input, output) {
     
     output$plot1 <- renderPlot({
-        print(ggplot(BL_BYM[BL_BYM$Year == input$year1,], aes(x=Month,y=Bill ,fill=SubID)) + geom_bar(stat="identity", drop= FALSE)+scale_x_discrete(drop=FALSE))
+        print(ggplot(BL_BYM[BL_BYM$Year == input$year1,], aes(x=Month,y=Bill ,fill=SubID)) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
     })
     output$plot2 <- renderPlot({
         print(ggplot(SH_BYM[SH_BYM$Year == input$year2,], aes(x=Month,y=shop_expense ,fill=SubID)) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
@@ -187,6 +196,10 @@ server <- function(input, output) {
     output$t1 <- renderTable(TR)
     
     output$BTtable <- renderDataTable(TT) 
+    
+    output$Dist1 <- renderPlot({MCapDist_byCapPie})
+    output$Dist2 <- renderPlot({MCapDist_bySecPie})
+    
 }
 
 shinyApp(ui, server)

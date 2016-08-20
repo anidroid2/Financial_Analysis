@@ -20,7 +20,3 @@ InvestEQ <- TTadv %>%
 InvestEQ$qtryear <- chartr(".","/" , InvestEQ$qtryear)
 InvestEQ$inout <- ifelse(InvestEQ$Net < 0,"Out","In")
 
-KPI_EQ <- sum(holding$worth)
-
-InvestPie <- c(KPI_CASH,KPI_201,KPI_MF,KPI_EQ)
-InvestPie_names <- c("Cash","Fixed Deposit","Mutual Funds","Equity")
