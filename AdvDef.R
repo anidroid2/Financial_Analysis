@@ -13,3 +13,6 @@ txtToCode <- function (x){
 #         plot.title=element_text(size=14, face="bold")
 #     )
 # 
+
+txt2xts <- function(x)
+    return (get(x, pos=-1, envir=as.environment(symbols_env), mode="any", inherits=TRUE))

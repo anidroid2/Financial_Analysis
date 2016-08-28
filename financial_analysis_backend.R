@@ -2,7 +2,7 @@
 setwd("/home/anidroid2/Documents/FinancialAnalysis/Dev")
 
 #setup variable
-init_env = 1    #1=reload stock environment with new data , 0= dissble reload
+init_env = 0    #1=reload stock environment with new data , 0= dissble reload
 
 #Getting dependencies
 library(Quandl)

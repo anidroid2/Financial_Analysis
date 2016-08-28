@@ -7,7 +7,7 @@ Scode <- select(StockMD, 1:3)
 #Scode <- read.csv("~/Documents/FinancialAnalysis/DataSource/StockCode.csv",stringsAsFactors=FALSE)
 #Scode$Type <-   factor(Scode$Symbol) 
 
-duration_list <- c(default_year, default_year-1,default_year-2 , default_year-3,default_year -5)
+duration_list <- c(default_year, default_year-1,default_year-2 , default_year-3,default_year -5,default_year -10,default_year -20 )
 Sduration <- as.data.frame(duration_list)
 
 #get stock data from Yahoo Finance into new environment

@@ -34,11 +34,17 @@ ui <- dashboardPage(
                      menuSubItem("Historic Fund Flow", tabName = "View2"),
                      menuSubItem("Funds Distribution", tabName = "View3")
             ),
-            menuItem("Base TT table", tabName = "bTData")
+            menuItem("Base TT table", tabName = "bTData"),
+            menuItem("Testing!!", tabName = "testMenu")
         )
     ),
     dashboardBody(
         tabItems(
+            #TEST TAB
+            tabItem(tabName = "testMenu",
+              fluidRow(plotOutput("testplot"))  
+                
+            ),
             #DASHBOARD
             tabItem(tabName = "dashboard",
                     fluidRow(
@@ -98,7 +104,8 @@ ui <- dashboardPage(
                             selectInput("sDur","Plot for: ",choices = Sduration$duration, selected = "2 year")
                         ),
                         box(
-                            selectInput("cType","Type of Chart",choices = c("Candle Stick w/ ", "Line"), selected = "Line")
+                            selectInput("cType","Type of Chart",choices = c("Candle Stick w/ ", "Line"), selected = "Line"),
+                            checkboxInput("TA","Technical Analysis",FALSE)
                             
                         ),
                         plotOutput("sPlot1")
@@ -181,10 +188,12 @@ server <- function(input, output) {
     })
     
     output$sPlot1 <- renderPlot({
-        if(input$cType != "Line")
+        if(input$cType != "Line" )
             chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::')]  )
+        if(input$TA == FALSE)
+            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6],theme = "white")
         else
-            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6]  )
+            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6],theme = "white" ,TA= "addVo();addRSI();addEMA(25);addEMA(200)")
     })
     
     
@@ -199,7 +208,7 @@ server <- function(input, output) {
     
     output$Dist1 <- renderPlot({MCapDist_byCapPie})
     output$Dist2 <- renderPlot({MCapDist_bySecPie})
-    
+    output$testplot <- renderPlot({MCapDist_byCapPie})
 }
 
 shinyApp(ui, server)

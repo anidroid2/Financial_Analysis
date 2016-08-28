@@ -3,3 +3,5 @@
 .RData
 *~
 CASH_Q1/*
+*.RData
+R_ws.RData
