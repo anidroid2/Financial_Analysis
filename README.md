@@ -45,5 +45,5 @@ $ install.packages(shiny)
 
 ##Screenshots of Dashboard
 
-![](Dashboard/1_MarketWatch.png?raw=true)
+![](Screenshots/1_MarketWatch.png?raw=true)
 
