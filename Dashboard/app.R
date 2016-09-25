@@ -23,11 +23,12 @@ ui <- dashboardPage(
     dashboardSidebar(
         sidebarMenu(
             menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-            menuItem("InFlow", tabName = "flow1", icon = icon("bar-chart")),
-            menuItem("OutFlow", tabName = "flow2", icon = icon("bar-chart"),
+            menuItem("Income", tabName = "flow1", icon = icon("bar-chart")),
+            menuItem("Expense", tabName = "flow2", icon = icon("bar-chart"),
                      menuSubItem("Bills",tabName = "bill"),
                      menuSubItem("Shopping",tabName = "shop"),
-                     menuSubItem("Event Expenses",tabName = "travel")
+                     menuSubItem("Event Expenses",tabName = "travel"),
+                     menuSubItem("Big Buys",tabName = "bigbuy")
             ),
             menuItem("Stock",tabName = "sData", icon= icon("dollar"),
                      menuSubItem("Market Watch", tabName = "View1"),
@@ -82,6 +83,16 @@ ui <- dashboardPage(
                             )
                         )
                 )
+            ),
+            
+            tabItem(tabName = "bigbuy",
+                    fluidRow(
+                        box( plotOutput("plot3")),
+                        box(
+                            selectInput("year3","Year:", choices = unique(TTadv$year),selected = default_year
+                            )
+                        )
+                    )
             ),
             
             tabItem(tabName = "shop",
@@ -144,6 +155,11 @@ server <- function(input, output) {
     output$plot2 <- renderPlot({
         print(ggplot(SH_BYM[SH_BYM$Year == input$year2,], aes(x=Month,y=shop_expense ,fill=SubID)) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
     })
+    
+    output$plot3 <- renderPlot({
+        print(ggplot(BB_BYM[BB_BYM$Year == input$year3,], aes(x=Month,y=Big_expense ,fill=SubID)) + geom_bar(stat="identity")+scale_x_discrete(drop=FALSE))
+    })
+    
     output$Box1 <- renderValueBox({
         valueBox(value = sprintf("%s ₹", KPI_CASH),
                  subtitle = sprintf("Holding Cash"),
@@ -193,7 +209,7 @@ server <- function(input, output) {
         if(input$TA == FALSE)
             chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6],theme = "white")
         else
-            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6],theme = "white" ,TA= "addVo();addRSI();addEMA(25);addEMA(200)")
+            chartSeries( list_symbols[[(txtToCode(input$stockin1) )]][paste0(input$sDur,'::'),6],theme = "white" ,TA= "addVo();addRSI();addEMA(25);addEMA(200);addMACD()")
     })
     
     

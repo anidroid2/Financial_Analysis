@@ -25,3 +25,7 @@ BL_BYM$SubID <- sapply(BL_BYM$SubID, function(x) CC_subid2desc(x))
 
 BL_BYM$SubID <- as.factor(BL_BYM$SubID)
 
+
+#Get more insights
+xBL = xTT[xTT$CostCentre == "10BL",]
+

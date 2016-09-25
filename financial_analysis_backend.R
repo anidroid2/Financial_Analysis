@@ -5,6 +5,7 @@ setwd("/home/anidroid2/Documents/FinancialAnalysis/Dev")
 init_env = 0    #1=reload stock environment with new data , 0= dissble reload
 
 #Getting dependencies
+library(xts)
 library(Quandl)
 library(quantmod)
 library(stringr)
@@ -12,6 +13,7 @@ library(dplyr)
 library(tidyr)
 library(lubridate)
 library(scales)
+library(PerformanceAnalytics)
 
 source("AdvDef.R")
 source("routine.R")
